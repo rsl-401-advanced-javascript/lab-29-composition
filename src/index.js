@@ -1,14 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Link, Route } from 'react-router-dom';
+
+import Story from './story';
 
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-      </div>
+      <>
+        <BrowserRouter>
+          <nav>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/code">Code</Link></li>
+            </ul>
+          </nav>
+          <Route path="/" render={() => <p>Hello world!</p>} />
+          <Route path="/code" component={Story} />
+        </BrowserRouter>
+      </>
     );
   }
 }
